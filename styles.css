@@ -1,0 +1,273 @@
+/* === Mantener todo de lugar: no cambié posiciones ni tamaños === */
+
+body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.contenedor {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* fondo - no toqué la posición ni tamaño original */
+.fondo {
+  position: fixed;
+  top: 0;
+  left: -100px;
+  height: 100vh;
+  width: 150vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  display: block;
+  pointer-events: none;
+}
+
+.logosup {
+  position: absolute;
+  top: 15px;
+  left: 40px;
+  width: 330px;
+  z-index: 4;
+  display: block;
+}
+
+.mira {
+  position: absolute;
+  top: 150px;
+  left: 45px;
+  width: 320px;
+  z-index: 4;
+
+  /* respiración */
+  animation: breathe 3000ms ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+  display: block;
+  pointer-events: none;
+}
+
+.calaveras {
+  position: absolute;
+  top: 135px;
+  left: 31px;
+  width: 349px;
+  z-index: 4;
+
+  /* transición por si se quita la animación */
+  transition: transform 300ms linear;
+  transform-origin: center center;
+  will-change: transform;
+  display: block;
+  pointer-events: none;
+}
+
+.drop {
+  position: absolute;
+  top: 509px;
+  left: 36px;
+  width: 340px;
+  z-index: 4;
+
+  transition: transform 260ms ease;
+  transform-origin: center center;
+  will-change: transform;
+  display: block;
+  /* pointer-events left default (clickable) */
+}
+
+/* Hover visual para el "último drop" (sin cambiar posición/tamaño base) */
+.drop.hovered,
+.drop:hover {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.logoinf {
+  position: absolute;
+  top: 535px;
+  left: 145px;
+  width: 120px;
+  z-index: 4;
+  display: block;
+}
+
+.click {
+  position: absolute;
+  top: 260px;
+  left: 36px;
+  width: 340px;
+  z-index: 4;
+
+  /* pulso continuo */
+  animation-name: pulse;
+  animation-duration: 1800ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  transition: transform 180ms ease;
+  transform-origin: center center;
+  will-change: transform;
+  display: block;
+  cursor: pointer;
+}
+
+/* Hover visual reforzado (JS añade .hovered además del :hover) */
+.click:hover,
+.click.hovered {
+  transform: scale(1.15);
+}
+
+/* Respira (mira) */
+@keyframes breathe {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Pulso del click */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Spin para calaveras (se activa con la clase .spin desde JS) */
+.calaveras.spin {
+  animation-name: spin;
+  animation-duration: 1800ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* clase para velocidad mayor (añadida por JS cuando se hace hover) */
+.calaveras.spin-fast {
+  animation-duration: 900ms; /* más rápida */
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* MEDIA queries: mantengo exactamente lo que tenías (sin tocar ubicaciones/sizes) */
+@media (min-width: 1024px) {
+  .fondo {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .mira {
+    position: absolute;
+    top: 150px;
+    left: 280px;
+    width: 450px;
+    z-index: 4;
+  }
+
+  .logosup {
+    position: absolute;
+    top: 15px;
+    left: 290px;
+    width: 430px;
+    z-index: 4;
+  }
+
+  .calaveras {
+    position: absolute;
+    top: 125px;
+    left: 259px;
+    width: 495px;
+    z-index: 4;
+  }
+
+  .drop {
+    position: absolute;
+    top: 629px;
+    left: 310px;
+    width: 390px;
+    z-index: 4;
+  }
+
+  .logoinf {
+    position: absolute;
+    top: 680px;
+    left: 448px;
+    width: 120px;
+    z-index: 4;
+  }
+}
+
+@media (min-width: 1440px) {
+  .fondo {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .mira {
+    position: absolute;
+    top: 170px;
+    left: 635px;
+    width: 550px;
+    z-index: 4;
+  }
+
+  .logosup {
+    position: absolute;
+    top: 8px;
+    left: 650px;
+    width: 500px;
+    z-index: 4;
+  }
+
+  .calaveras {
+    position: absolute;
+    top: 142px;
+    left: 612px;
+    width: 600px;
+    z-index: 4;
+  }
+
+  .drop {
+    position: absolute;
+    top: 740px;
+    left: 630px;
+    width: 590px;
+    z-index: 4;
+  }
+
+  .logoinf {
+    position: absolute;
+    top: 810px;
+    left: 845px;
+    width: 150px;
+    z-index: 4;
+  }
+
+  .click {
+    position: absolute;
+    top: 358px;
+    left: 625px;
+    width: 580px;
+    z-index: 4;
+  }
+}
